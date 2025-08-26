@@ -1,0 +1,237 @@
+/*
+  TGIS Schoolbox Aggressive Dark Mode
+  Version: 3.0 (Dynamic Edition)
+  - NEW: Added multiple float-in, pop-in, and fade-in animations for a dynamic page load.
+  - NEW: Added styles for a JavaScript-powered typing effect on the welcome message.
+  - NEW: General enhancements: custom scrollbars and text selection styles.
+  - Maintains all previous features: custom BG, smaller profile icon, frosted glass, etc.
+*/
+
+/* 1. Global Styles & Color Palette */
+:root {
+  --dark-bg-tertiary: #2a2a2a;
+  --dark-text-primary: #e0e0e0;
+  --dark-text-secondary: #b3b3b3;
+  --dark-accent-primary: #4a90e2;
+  --dark-accent-hover: #6aa8f5;
+  --dark-border-color: #383838;
+  --distinct-border-color: #555;
+  --ui-border-radius: 12px;
+  --icon-color: #dcdcdc;
+  --dark-bg-secondary-trans: rgba(30, 30, 30, 0.75);
+  --glass-blur: 14px;
+  --accent-gradient: linear-gradient(45deg, var(--dark-accent-hover), var(--dark-accent-primary));
+}
+
+/* 2. Aggressive Global Override & Enhancements */
+* {
+  color: var(--dark-text-primary) !important;
+  background-color: transparent !important;
+  border-color: var(--dark-border-color) !important;
+  box-shadow: none !important; text-shadow: none !important;
+}
+/* NEW: Custom Text Selection */
+::selection {
+  background-color: var(--dark-accent-primary) !important;
+  color: #fff !important;
+}
+/* NEW: Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background-color: var(--distinct-border-color);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--dark-accent-primary); }
+
+/* --- Custom Background Image --- */
+html, body {
+  background-color: #121212;
+  background-image: url('https://hdwallpapers4k.com/wp-content/uploads/2025/03/dark_theme_minimalist_landscape_af285e9b.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* --- NEW: Page Load Animations --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Apply animations */
+.component-container, .tile, .information-list li {
+    animation: fadeInUp 0.6s ease-out both;
+}
+#hybrid-bar {
+    animation: fadeIn 0.5s ease-out both;
+}
+#profile-drop, #notification-toggle {
+    animation: scaleIn 0.5s ease-out both;
+    animation-delay: 0.2s;
+}
+
+/* Staggered animation for modules */
+#component17 { animation-delay: 0.1s; } /* Welcome */
+#component63474 { animation-delay: 0.3s; } /* Tiles */
+#component19 { animation-delay: 0.5s; } /* News */
+#component20 { animation-delay: 0.6s; } /* Calendar */
+#component63528 { animation-delay: 0.7s; } /* Slideshow */
+
+/* --- NEW: Typing Effect Styles --- */
+div#component17 h1.typing-effect::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background-color: var(--dark-accent-hover);
+    margin-left: 8px;
+    animation: blink 1s step-end infinite;
+    vertical-align: bottom;
+}
+/* Hide until animation starts */
+div#component17 h1 {
+    opacity: 0;
+    animation: fadeIn 0.1s ease-out 0.4s both;
+}
+
+/* --- UI & Image Rounding --- */
+.island, .card, button, .button, input, textarea, select,
+.tabs dd, .tabs-content, .reveal-modal, #account-content, .tile,
+#msg-content .card, .fc-view-harness, .swiper {
+    border-radius: var(--ui-border-radius) !important;
+}
+img { border-radius: calc(var(--ui-border-radius) - 4px) !important; }
+#msg-content img { border-radius: 50% !important; }
+
+/* 3. Layout & Main Containers */
+#left-menu, #msgs, aside, .reveal-modal {
+  background-color: var(--dark-bg-secondary-trans) !important;
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--ui-border-radius) !important;
+}
+#hybrid-bar, .tab-bar, #header, #footer {
+  background-color: var(--dark-bg-tertiary) !important;
+  border-bottom: 1px solid var(--dark-border-color) !important;
+  border-top: 1px solid var(--dark-border-color) !important;
+}
+
+/* --- Distinct, Spaced-Out Modules --- */
+.component-container {
+    background-color: var(--dark-bg-secondary-trans) !important;
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--distinct-border-color) !important;
+    border-radius: var(--ui-border-radius) !important;
+    padding: 1.75rem !important;
+    margin-bottom: 2.5rem !important;
+}
+.component-container .island {
+   border: none !important; padding: 0 !important; margin: 0 !important;
+   border-radius: 0 !important; background-color: transparent !important;
+}
+
+/* --- Redesigned Profile Icon & Menu --- */
+#profile-drop {
+    margin-right: 10px; height: 44px !important; width: 44px !important;
+}
+#profile-drop img, .account-menu-mobile img {
+    height: 100% !important; width: 100% !important;
+    border-radius: 35% !important;
+    margin-top: 12px !important;
+}
+#account-content {
+    background-color: var(--dark-bg-secondary-trans) !important;
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--distinct-border-color) !important;
+    padding: 8px !important; top: 60px !important; right: 15px !important;
+    z-index: 1000 !important;
+}
+#account-content ul { list-style-type: none !important; margin: 0 !important; }
+#account-content li a {
+    display: block !important; align-items: center !important;
+    padding: 12px 10px !important; border-radius: 8px !important;
+    transition: background-color 0.2s ease-in-out;
+    z-index: 1000 !important;
+
+}
+#account-content li a::before { margin-right: 12px !important; }
+#account-content li a:hover { background-color: rgba(255, 255, 255, 0.1) !important; }
+#account-content li.separator {
+    color: var(--dark-text-secondary) !important; font-size: 0.75rem !important;
+    font-weight: bold !important; text-transform: uppercase !important;
+    letter-spacing: 0.5px !important; padding: 15px 10px 5px !important;
+    border-bottom: 1px solid var(--dark-border-color) !important; margin-bottom: 5px !important;
+}
+
+/* --- Aggressively Center Welcome Title & Content --- */
+div#component17 .columns, .information-list .card { text-align: center !important; }
+.information-list .card article { max-width: 80ch; margin: 0 auto; }
+.Component_Dashboard_GreetingController h1 { font-size: 40px !important;}
+
+/* --- Gradient Text for Important Headers --- */
+div#component17 h1, h2.subheader {
+    background: var(--accent-gradient) !important;
+    -webkit-background-clip: text !important; background-clip: text !important;
+    color: transparent !important;
+}
+
+/* --- PERFECT Top Menu Centering --- */
+.tab-bar-section {
+    position: relative; display: flex; justify-content: space-between;
+    align-items: center; width: 100%;
+}
+#top-menu {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%); display: flex; padding-left: 0;
+}
+#top-menu > li { display: list-item !important; }
+#top-menu > li > a {
+    display: flex; align-items: center; justify-content: center;
+    padding: 10px 12px; margin: 0 6px !important;
+    border: 1px solid var(--dark-border-color);
+    border-radius: 8px !important; transition: all 0.2s ease-in-out;
+}
+#top-menu > li > a::before { color: var(--icon-color) !important; transition: color 0.2s ease-in-out; }
+#top-menu > li > a > span {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
+#top-menu > li > a:hover {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-accent-primary) !important;
+}
+#top-menu > li > a:hover::before { color: var(--dark-accent-hover) !important; }
+
+#footer ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#made-by-link {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    color: var(--dark-text-secondary) !important;
+    transition: all 0.3s ease !important;
+}
+#made-by-link:hover {
+    color: var(--dark-accent-hover) !important;
+    text-shadow: 0 0 5px var(--dark-accent-hover) !important;
+}

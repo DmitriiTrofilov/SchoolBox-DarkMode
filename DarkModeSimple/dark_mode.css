@@ -1,0 +1,256 @@
+/*
+  TGIS Schoolbox Aggressive Dark Mode
+  Version: 1.8
+  - Removed top bar centering.
+  - Centered all footer content.
+  - Added a styled "Made By Dmitrii T" credit to the footer. (Note: This is visual only and not a clickable link).
+  - Kept icon-only top menu buttons and forced visibility.
+*/
+
+/* 1. Global Styles & Color Palette */
+:root {
+  --dark-bg-primary: #121212;
+  --dark-bg-secondary: #1e1e1e;
+  --dark-bg-tertiary: #2a2a2a;
+  --dark-text-primary: #e0e0e0;
+  --dark-text-secondary: #b3b3b3; /* Light Gray */
+  --dark-accent-primary: #4a90e2; /* A readable blue for links and highlights */
+  --dark-accent-hover: #6aa8f5;
+  --dark-border-color: #383838;
+}
+
+/* 2. Aggressive Global Override */
+* {
+  color: var(--dark-text-primary) !important;
+  background-color: transparent !important;
+  border-color: var(--dark-border-color) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+html, body {
+  background-color: var(--dark-bg-primary) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+/* 3. Layout & Main Containers */
+.off-canvas-wrap, .inner-wrap, .main, #container, #content, section.main, .main-section {
+  background-color: var(--dark-bg-primary) !important;
+}
+
+/* Side Menus & Navigation */
+#left-menu, #msgs, aside {
+  background-color: var(--dark-bg-secondary) !important;
+}
+
+#hybrid-bar, .tab-bar, #header {
+  background-color: var(--dark-bg-tertiary) !important;
+  border-bottom: 1px solid var(--dark-border-color) !important;
+  border-top: 1px solid var(--dark-border-color) !important;
+}
+
+.left-off-canvas-toggle svg rect {
+  fill: var(--dark-text-primary) !important;
+}
+
+/* --- MODIFICATION: Top Menu Styling (No Centering) --- */
+/* Force all menu items to be visible */
+#top-menu > li {
+    display: list-item !important;
+}
+
+/* Style individual top menu buttons */
+#top-menu > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    margin: 0 4px;
+    border: 1px solid var(--dark-border-color);
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Directly target the ::before pseudo-element for the icon color */
+#top-menu > li > a::before {
+    color: var(--dark-text-secondary) !important;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Hide the text label accessibly */
+#top-menu > li > a > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Hover effect for the button */
+#top-menu > li > a:hover {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-accent-primary) !important;
+}
+
+/* On hover, change the icon color */
+#top-menu > li > a:hover::before {
+    color: var(--dark-accent-hover) !important;
+}
+/* --- END MODIFICATION --- */
+
+/* 4. Content Blocks & Components */
+.island, .card, .component-container, .tabs-content, .reveal-modal, #account-content, .fc-view-harness {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border-color) !important;
+}
+
+.component-container .island, .component-container .row {
+   border: none !important;
+}
+
+/* 5. Typography */
+h1, h2, h3, h4, h5, h6, p, span, li, label, strong, article div {
+  color: var(--dark-text-primary) !important;
+}
+
+h1 strong, h2.subheader {
+    color: var(--dark-accent-primary) !important;
+}
+
+p.meta, .meta, time {
+  color: var(--dark-text-secondary) !important;
+}
+
+a, a:visited {
+  color: var(--dark-accent-primary) !important;
+  transition: color 0.2s ease;
+}
+
+a:hover, a:focus {
+  color: var(--dark-accent-hover) !important;
+}
+
+/* 6. UI Elements: Buttons, Forms, Tabs */
+.button, button, input[type="submit"], .fc-button {
+  background-color: var(--dark-accent-primary) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--dark-accent-primary) !important;
+}
+
+.button:hover, button:hover, input[type="submit"]:hover, .fc-button:hover {
+  background-color: var(--dark-accent-hover) !important;
+  border-color: var(--dark-accent-hover) !important;
+}
+
+.button.secondary, a.button:not(.submit) {
+  background-color: var(--dark-bg-tertiary) !important;
+  border: 1px solid var(--dark-border-color) !important;
+}
+
+input[type="text"], input[type="search"], input[type="password"], textarea, select {
+  background-color: var(--dark-bg-tertiary) !important;
+  color: var(--dark-text-primary) !important;
+  border: 1px solid var(--dark-border-color) !important;
+  border-radius: 4px;
+}
+
+.tabs dd > a, .tabs .tab-title > a {
+  background-color: transparent !important;
+}
+
+.tabs dd.active > a, .tabs .tab-title.active > a {
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-accent-primary) !important;
+}
+
+/* --- NEW: Footer Centering & Credit --- */
+#footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 !important;
+    background-color: var(--dark-bg-tertiary) !important;
+    border-top: 1px solid var(--dark-border-color) !important;
+}
+
+#footer ul {
+    justify-content: center;
+    width: 100%;
+    padding-left: 0;
+}
+
+/* Adds a non-clickable styled credit. A real link requires JavaScript, not just CSS. */
+#footer::after {
+    content: 'Made By Dmitrii T';
+    display: block;
+    margin-top: 12px;
+    font-size: 0.9em;
+    font-weight: 600;
+    
+    /* Cool gradient style */
+    background: linear-gradient(90deg, #6aa8f5, #b39ddb) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+#footer:hover::after {
+    filter: brightness(1.2);
+}
+/* --- END MODIFICATION --- */
+
+
+/* 7. Specific Component Styling */
+.tile[style*="background-image"] {
+    background-size: cover !important;
+    position: relative;
+}
+.tile[style*="background-image"]::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+.tile[style*="background-image"]:hover::before {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.tile[style*="background-image"] > * {
+    position: relative;
+    z-index: 2;
+}
+
+.information-list li, #msg-content li {
+  border-bottom: 1px solid var(--dark-border-color) !important;
+}
+.status-unread {
+    background-color: #2a3a4d !important;
+}
+
+.fc-theme-standard .fc-list, .fc-list-view, .fc-list-event td {
+    border-color: var(--dark-border-color) !important;
+}
+.fc-daygrid-day.fc-day-today {
+    background-color: rgba(74, 144, 226, 0.15) !important;
+}
+.fc-list-event:hover td {
+    background-color: var(--dark-bg-tertiary) !important;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: var(--dark-accent-primary) !important;
+}
+.swiper-pagination-bullet {
+    background: var(--dark-text-secondary) !important;
+}
+.swiper-pagination-bullet-active {
+    background: var(--dark-accent-primary) !important;
+}

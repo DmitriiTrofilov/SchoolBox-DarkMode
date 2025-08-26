@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "TGIS Dark Mode & Login Redirect",
+  "version": "3.0",
+  "description": "Automatically redirects from the login page to the SAML SSO page and applies a clean dark mode with dynamic animations to tgis.schoolbox.cloud.",
+  "permissions": [
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://tgis.schoolbox.cloud/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://tgis.schoolbox.cloud/*"],
+      "css": ["dark_mode.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "TGIS Dark Mode & Redirect Active"
+  }
+}
